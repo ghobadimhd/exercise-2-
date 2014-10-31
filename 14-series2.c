@@ -18,6 +18,7 @@ int main(int argc, const char *argv[])
 		sum +=( power(x,i)/factorial(i)) ;
 		
 	}
+	printf("sum is %d \n",sum);
 	return 0;
 }
 /*
