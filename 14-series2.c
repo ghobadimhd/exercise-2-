@@ -15,8 +15,39 @@ int main(int argc, const char *argv[])
 	scanf("%d %d",&x , &n);
 	for (int i = 1; i <= n; i++) 
 	{
-		sum +=( power(x,i)/factotial(i)) ;
+		sum +=( power(x,i)/factorial(i)) ;
 		
 	}
 	return 0;
+}
+/*
+this is function for calculating power 
+*/
+int power(int num, int pwr )
+{
+	int isNagetive =0;
+	float result ;
+	if (pwr< 0) 
+	{
+		isNagetive = 1;	
+		pwr *=-1;
+	}
+	for (int i = 0; i < pwr; i++) 
+	{
+		result *=(float) num;
+	}
+	result = isNagetive  ? 1/result : result ;
+	return result ;
+}
+/*
+this is function for calculating factorial
+*/
+int factorial(int num)
+{
+	int fact=1;
+	for (int i = 2; i <= num; i++) 
+	{
+		fact*=i;
+	}
+	return fact;
 }
