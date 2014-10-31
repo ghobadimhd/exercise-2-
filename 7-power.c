@@ -9,7 +9,7 @@ describtion : This is program for calculating r power n
 
 int main(int argc, const char *argv[])
 {
-	double number , power , result=1 ;
+	float number , power , result=1 ;
 	printf("Please enter R and N seprated by space : ");
 	scanf("%f %f",&number,&power);
 	for (int i = 0; i <= power; i++) 
@@ -17,6 +17,6 @@ int main(int argc, const char *argv[])
 		result *= number;
 	}
 	result = power < 0 ? 1/result : result;	
-	printf("R ^ N = %f\n",result);
+	printf("R ^ N = %f \n",result);
 	return 0;
 }
