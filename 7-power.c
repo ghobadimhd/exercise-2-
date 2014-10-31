@@ -9,14 +9,20 @@ describtion : This is program for calculating r power n
 
 int main(int argc, const char *argv[])
 {
-	float number , power , result=1 ;
+	int  number , power , isNagetive=0;
+	float result=1 ;
 	printf("Please enter R and N seprated by space : ");
-	scanf("%f %f",&number,&power);
-	for (int i = 0; i <= power; i++) 
+	scanf("%d %d",&number,&power);
+	if (power< 0) 
 	{
-		result *= number;
+		isNagetive = 1;	
+		power *=-1;
 	}
-	result = power < 0 ? 1/result : result;	
+	for (int i = 0; i < power; i++) 
+	{
+		result *=(float) number;
+	}
+	result = isNagetive   ? 1 / result : result;	
 	printf("R ^ N = %f \n",result);
 	return 0;
 }
