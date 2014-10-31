@@ -11,7 +11,14 @@ int main(int argc, const char *argv[])
 {
 	int number1 , number2 ;
 	printf("Please enter two number seprated with space : ");
-	scanf("%d %d ",&number1,&number2);
+	scanf("%d %d",&number1,&number2);
 	printf("sum is %d \n",sum(number1 , number2 ));
 	return 0;
+}
+/*
+this is function for calculate sum of two number
+*/
+int sum(int number1 , int number2)
+{
+	return number1 + number2 ;
 }
