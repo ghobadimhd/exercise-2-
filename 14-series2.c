@@ -10,15 +10,15 @@ int power(int,int);
 int factorial(int);
 int main(int argc, const char *argv[])
 {
-	int sum=0 , x , n ;
+	int  x , n ;
+	float sum = 0 ;
 	printf("Please enter x and n : ");
 	scanf("%d %d",&x , &n);
 	for (int i = 1; i <= n; i++) 
 	{
-		sum +=( power(x,i)/factorial(i)) ;
-		
+		sum +=(float) power(x,i) / (float)factorial(i) ;
 	}
-	printf("sum is %d \n",sum);
+	printf("sum is %f \n",sum);
 	return 0;
 }
 /*
@@ -27,7 +27,7 @@ this is function for calculating power
 int power(int num, int pwr )
 {
 	int isNagetive =0;
-	float result ;
+	float result =1;
 	if (pwr< 0) 
 	{
 		isNagetive = 1;	
