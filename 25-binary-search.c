@@ -22,6 +22,11 @@ int main(int argc, const char *argv[])
 	printf("Enter number to search : ");
 	scanf("%d",&number);
         bubbleSort(array,length);
+	printf("sorting done : \n");
+	for (int i = 0; i <length; i++) 
+	{
+		printf("%d : %d \n",i,array[i]);
+	}
         printf("number index is %d\n",binarySearch(array,length,number));
         return 0;
 }
