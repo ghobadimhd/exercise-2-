@@ -11,8 +11,7 @@ int main(int argc, const char *argv[])
 	int array[10] ;
 	for (int i = 0; i <10; i++) 
 	{
-		printf("%d\n",array[10]);
-		
+		array[i]=0;
 	}
 	return 0;
 }
