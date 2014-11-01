@@ -16,17 +16,11 @@ int main(int argc, const char *argv[])
 	for (int i = 1; i <= rows; i++) 
 	{
 		if ( rows % 2 == 0 )
-		{
 			sign = i==rows/2 || i == rows/2 + 1  ? '+' : '*';
-		}
 		else 
-		{
 			sign = i==rows/2 + 1 ? '+' : '*';
-		}
 		for (int j =1; j <= i; j++) 
-		{
 			printf("%c",sign);
-		}
 		printf("\n");
 	}
 	return 0;
