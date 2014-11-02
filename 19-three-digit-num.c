@@ -44,3 +44,20 @@ int main(int argc, const char *argv[])
         printf("there is %d three digit  number in string .\n",count);
         return 0;
 }
+/*
+this is function that check for repeated char in string .
+*/
+int isRepeated(char str[])
+{
+	 int i=0;
+	 while (str[i]!='\0') 
+	 {
+	 	char ch=str[i] ;
+	 	for (int j = i+1; str[j]!='\0'	; j++) 	
+	 	{
+	 		if(str[j]==ch)	
+				return 1;
+	 	}
+	 }
+	return 0;
+}
