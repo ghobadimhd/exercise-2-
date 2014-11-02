@@ -7,9 +7,13 @@ describtion : This is program for removing extra spaces that are in strings .
 */
 #include <stdio.h>
 #include <string.h>
+/*
+the main function first pass every space it find until get a some thing else then copy it on string 2 , from now
+when it get a character if the character was not a space copy else it copy a space and pass other spaces to get a some thing else 
+*/
 int main(int argc, const char *argv[])
 {
-	char *string ,*string2="" ;
+	char *string ,*string2=""  ;
 	int isUniq=0 , i=0;
 	printf("Enter a string : ");
 	gets(string);
@@ -18,14 +22,16 @@ int main(int argc, const char *argv[])
 		 if ( string[i]==' ')
 		 {
 			if( isUniq )
-		 	{
-				strcat(string2, { string[i],'\0'});
+		 	{				
+				char ch[]={ string[i],'\0'};
+				strcat(string2,ch);
 				isUniq=0;
 			}
 		 }
 		else 
 		{
-		 	strcat(string2, { string[i],'\0'});
+			char ch[]={ string[i],'\0'};
+			strcat(string2,ch);
 			isUniq=1;
 		}
 	}
