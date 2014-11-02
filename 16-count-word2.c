@@ -13,7 +13,7 @@ three letter word and  repeat the process again util get the end of string .
 int main(int argc, const char *argv[])
 {
         char *string ;
-        int count= 0 , i=0 , letterCount =0;
+        int count= 0 , i=0 , letterCount =0;// after adding third variable (letterCount) , program show this runtime error : Segmentation fault
         printf("Enter a string  : ");
         gets(string);
         while(string[i] != '\0')
