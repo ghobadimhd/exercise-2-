@@ -32,16 +32,15 @@ int main(int argc, const char *argv[])
                         }
                         if ( digitCount == 3 ) 
                         {
-				char threeDigit[]={string[i-3],string[i-2],string[i-1] };
+				char threeDigit[]={string[i-3],string[i-2],string[i-1],'\0' };
 				if(!isRepeated(threeDigit))
 				{
                                  	count++;
 					printf("%s\n",threeDigit);
-                                {
+                                }
                         }
                 }
         }
         printf("there is %d three digit  number in string .\n",count);
         return 0;
 }
-
