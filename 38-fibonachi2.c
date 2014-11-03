@@ -15,4 +15,15 @@ int main(int argc, const char *argv[])
 	printf("%d\n",getFibonachi(n));
 	return 0;
 }
+/*
+this is function for geting Nth fibonachi number 
+*/
+int getFibonachi(int n)
+{
+        if ( n == 1 || n == 2)
+                 return 1;    
+	
+        else 
+                return getFibonachi(n-1) + getFibonachi(n-2);
+}
 
