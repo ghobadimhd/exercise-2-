@@ -62,4 +62,40 @@ void add()
 	else 
 		printf("phone book is full .\n");
 }
-
+/*
+this is function for removin a contact	
+*/
+void remove()
+{
+	int isFounded =0;
+	printf("Enter \nname :\n");
+	gets(phoneBook.contact[phoneBook.top].name);
+	printf("family :\n");
+	gets(phoneBook.contact[phoneBook.top].family);
+	for (int i = 0; i <=phoneBook.top; i++) 
+	{
+		if ( isFounded )
+		{
+			 phoneBook.contacts[i-1]=phoneBook.contacts[i];
+		}
+		else if ( strcmp(phoneBook.contacts[i].name,name) &&  strcmp(phoneBook.contacts[i].family,family)  )
+		{
+			 char accept ;
+			 printf("do you want remove  --> %s %s %s (y-n) : \n");
+			 scanf("%c",&accept);
+			 if(accept == 'y')
+				if(i==phoneBook.top)
+				{
+					phoneBook.top--;
+					isFounded=1;
+				}
+			 	else 
+			 	{
+			 	//phoneBook.contacts[i]=phoneBook.contacts[i+1]
+					isFounded=1;
+			 	}
+		}
+	}
+	if(!isFounded)
+		printf("This person is not in the Phone book\n");
+}
