@@ -22,9 +22,10 @@ void show();
 int main(int argc, const char *argv[])
 {
 	int choice ;
+	myPhoneBook.top=0;
 	do 
 	{
-		printf("Enter what you want : \n1-add contact \n 2-remove contact\n3-show contact\n4-exit\n(1-4)? : ");
+		printf("Enter what you want : \n1-add contact \n2-remove contact\n3-show contact\n4-exit\n(1-4)? : ");
 		scanf("%d",&choice);
 		switch(choice)
 		{
@@ -42,7 +43,7 @@ int main(int argc, const char *argv[])
 			default:
 				printf("Please enter number between 1 to 4 \n");
 		}
-	} while (choice ==4);
+	} while (choice !=4);
 	return 0;
 }
 /*
@@ -52,11 +53,12 @@ void add()
 {
 	if(myPhoneBook.top<100)
 	{
-		printf("name :\n");
+		printf("name :");
+		gets(myPhoneBook.contacts[myPhoneBook.top].name);//its capture first enter 
 		gets(myPhoneBook.contacts[myPhoneBook.top].name);
-		printf("family :\n");
+		printf("family :");
 		gets(myPhoneBook.contacts[myPhoneBook.top].family);
-		printf("number :\n");
+		printf("number :");
 		gets(myPhoneBook.contacts[myPhoneBook.top].number);
 		myPhoneBook.top++;
 	}
@@ -69,10 +71,11 @@ this is function for removin a contact
 void removeContact()
 {
 	int isFounded =0;
-	char name[50] ,family[5];
-	printf("Enter \nname :\n");
+	char name[50] ,family[50];
+	printf("Enter \nname :");
+	gets(name);// it capture first enter
 	gets(name);
-	printf("family :\n");
+	printf("family :");
 	gets(family);
 	for (int i = 0; i <=myPhoneBook.top; i++) 
 	{
@@ -80,11 +83,12 @@ void removeContact()
 		{
 			 myPhoneBook.contacts[i-1]=myPhoneBook.contacts[i];
 		}
-		else if ( strcmp(myPhoneBook.contacts[i].name,name) &&  strcmp(myPhoneBook.contacts[i].family,family)  )
+		else if ( strcmp(myPhoneBook.contacts[i].name,name)==0 &&  strcmp(myPhoneBook.contacts[i].family,family)==0  )
 		{
-			 char accept ;
-			 printf("do you want remove  --> %s %s %s (y-n) : \n");
+			 char accept , enter ;
+			 printf("\t do you want remove  --> name : %s family : %s number : %s : (y-n)? : ",name ,family,myPhoneBook.contacts[i].number);
 			 scanf("%c",&accept);
+			 scanf("%c",&enter);
 			 if(accept == 'y')
 				if(i==myPhoneBook.top)
 				{
@@ -100,4 +104,24 @@ void removeContact()
 	}
 	if(!isFounded)
 		printf("This person is not in the Phone book\n");
+}
+/*
+this is function for showing contact details .
+*/
+void show()
+{
+	char name[50] , family[50] ;
+	printf("Enter \nname :");
+	gets(name);// it capture first enter
+	gets(name);
+	printf("family :");
+	gets(family);
+	for (int i = 0; i <=myPhoneBook.top; i++) 
+	{
+		if(strcmp(myPhoneBook.contacts[i].name,name)==0 &&  strcmp(myPhoneBook.contacts[i].family,family)==0 )
+		{
+			printf("\t### name : %s family : %s number : %s \n",name ,family,myPhoneBook.contacts[i].number);
+		}
+	}
+	printf("\n");
 }
