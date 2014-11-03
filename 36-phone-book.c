@@ -8,16 +8,16 @@ describtion : This is program for storing phone numbers  .
 #include <stdio.h>
 struct contact 
 {
-	char name[50] , family[50] , phone[13];
+	char name[50] , family[50] , number[13];
 };
-struct phoneBook 
+struct contacts
 {
 	contact contacts[100];
 	int top=0;
-};
+}phoneBook;
 void add();
-void remove(char[],char[]);
-void show(char[],char[]);
+void remove();
+void show();
 int main(int argc, const char *argv[])
 {
 	int choice ;
@@ -44,3 +44,22 @@ int main(int argc, const char *argv[])
 	} while (choice ==4);
 	return 0;
 }
+/*
+this is function for to add a new contact
+*/
+void add()
+{
+	if(phoneBook.top<100)
+	{
+		printf("name :\n");
+		gets(phoneBook.contact[phoneBook.top].name);
+		printf("family :\n");
+		gets(phoneBook.contact[phoneBook.top].family);
+		printf("number :\n");
+		gets(phoneBook.contact[phoneBook.top].number);
+		phoneBook.top++;
+	}
+	else 
+		printf("phone book is full .\n");
+}
+
