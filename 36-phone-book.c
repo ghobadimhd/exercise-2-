@@ -6,17 +6,18 @@ Email : ghobadi.mhd@outlook.com
 describtion : This is program for storing phone numbers  .
 */
 #include <stdio.h>
+#include <string.h>
 struct contact 
 {
 	char name[50] , family[50] , number[13];
 };
-struct contacts
+struct phoneBook
 {
-	contact contacts[100];
-	int top=0;
-}phoneBook;
+	struct contact contacts[100] ;
+	int top ;
+}myPhoneBook;
 void add();
-void remove();
+void removeContact();
 void show();
 int main(int argc, const char *argv[])
 {
@@ -31,7 +32,7 @@ int main(int argc, const char *argv[])
 				add();
 			break;
 			case 2:
-				remove();
+				removeContact();
 			break;
 			case 3 :
 				show();
@@ -49,15 +50,15 @@ this is function for to add a new contact
 */
 void add()
 {
-	if(phoneBook.top<100)
+	if(myPhoneBook.top<100)
 	{
 		printf("name :\n");
-		gets(phoneBook.contact[phoneBook.top].name);
+		gets(myPhoneBook.contacts[myPhoneBook.top].name);
 		printf("family :\n");
-		gets(phoneBook.contact[phoneBook.top].family);
+		gets(myPhoneBook.contacts[myPhoneBook.top].family);
 		printf("number :\n");
-		gets(phoneBook.contact[phoneBook.top].number);
-		phoneBook.top++;
+		gets(myPhoneBook.contacts[myPhoneBook.top].number);
+		myPhoneBook.top++;
 	}
 	else 
 		printf("phone book is full .\n");
@@ -65,33 +66,34 @@ void add()
 /*
 this is function for removin a contact	
 */
-void remove()
+void removeContact()
 {
 	int isFounded =0;
+	char name[50] ,family[5];
 	printf("Enter \nname :\n");
-	gets(phoneBook.contact[phoneBook.top].name);
+	gets(name);
 	printf("family :\n");
-	gets(phoneBook.contact[phoneBook.top].family);
-	for (int i = 0; i <=phoneBook.top; i++) 
+	gets(family);
+	for (int i = 0; i <=myPhoneBook.top; i++) 
 	{
 		if ( isFounded )
 		{
-			 phoneBook.contacts[i-1]=phoneBook.contacts[i];
+			 myPhoneBook.contacts[i-1]=myPhoneBook.contacts[i];
 		}
-		else if ( strcmp(phoneBook.contacts[i].name,name) &&  strcmp(phoneBook.contacts[i].family,family)  )
+		else if ( strcmp(myPhoneBook.contacts[i].name,name) &&  strcmp(myPhoneBook.contacts[i].family,family)  )
 		{
 			 char accept ;
 			 printf("do you want remove  --> %s %s %s (y-n) : \n");
 			 scanf("%c",&accept);
 			 if(accept == 'y')
-				if(i==phoneBook.top)
+				if(i==myPhoneBook.top)
 				{
-					phoneBook.top--;
+					myPhoneBook.top--;
 					isFounded=1;
 				}
 			 	else 
 			 	{
-			 	//phoneBook.contacts[i]=phoneBook.contacts[i+1]
+			 	//myPhoneBook.contacts[i]=myPhoneBook.contacts[i+1]
 					isFounded=1;
 			 	}
 		}
