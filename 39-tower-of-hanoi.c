@@ -92,3 +92,15 @@ void reverseMove()
 	tower[lastMove[1]].topIndex--;
 	endOfPath--;
 }
+/*
+this is function that print path on screen  .
+*/
+void printPath()
+{
+	for (int i = 0; i <=endOfPath; i++) 
+	{
+		printf("%d",path[i]);
+		
+	}
+	printf("\n");
+}
