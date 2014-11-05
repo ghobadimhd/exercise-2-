@@ -13,7 +13,7 @@ three digit number , check for repeatd digit if there is no repeated digit print
 */
 int main(int argc, const char *argv[])
 {
-        char *string ;
+        char string[500] ;
         int count= 0 , i=0 , digitCount =0;
         printf("Enter a string  : ");
         gets(string);
@@ -58,6 +58,7 @@ int isRepeated(char str[])
 	 		if(str[j]==ch)	
 				return 1;
 	 	}
+		i++;
 	 }
 	return 0;
 }
