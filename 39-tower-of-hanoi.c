@@ -71,8 +71,8 @@ rules : 1-we can't put the bigger disk on smaller one
 */
 int move(int moveNum)
 {
-	int lastMove[2]=moves[path[endOfPath]] , currentMove[2]=moves[moveNum];
-	if(lastMove[0]!=currnetMove[1] 
+	int lastMove[2]=moves[path[endOfPath]] , currentMove[2]=moves[moveNum]; // Compile error: invalid initializer
+	if(lastMove[0]!=currentMove[1] 
 	&& tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] < tower[currentMove[1]].disks[tower[currentMove[1]].topIndex])
 	{
 		tower[currentMove[1]].disks[++(tower[currentMove[1]].topIndex)] = tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] ;
@@ -80,14 +80,14 @@ int move(int moveNum)
 		path[++endOfPath]=moveNum;
 		return 1 ;
 	}
-	return 0
+	return 0;
 }
 /*
 this is function that revers a last move and remove it from path .
 */
 void reverseMove()
 {
-	int lastMove[2]=moves[path[endOfPath]];
+	int lastMove[2]=moves[path[endOfPath]]; // Compile error: invalid initializer
 	tower[lastMove[0]].disks[++(tower[lastMove[0]].topIndex)] = tower[lastMove[1]].disks[tower[lastMove[1]].topIndex] ;
 	tower[lastMove[1]].topIndex--;
 	endOfPath--;
