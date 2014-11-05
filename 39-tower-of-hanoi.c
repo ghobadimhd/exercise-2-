@@ -20,7 +20,8 @@ void printPath();
 int main(int argc, const char *argv[])
 {
 	int win=0 , haveAMove=1;
-	while(win)
+	initialing();
+	do
 	{
 		
 		if(haveAMove)
@@ -39,7 +40,7 @@ int main(int argc, const char *argv[])
 		}
 		if(tower[2].topIndex==numberOfDisks-1)
 			win=1;
-	}
+	}while(!win);
 	return 0;
 }
 
