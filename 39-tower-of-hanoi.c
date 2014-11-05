@@ -13,7 +13,7 @@ struct Tower
 	int topIndex , disks[nummberOfDisks] ;
 } tower[3];
 void initialing();
-int move(int[]);
+int move(int);
 void reverseMove();
 void printPath();
 
@@ -35,8 +35,8 @@ int main(int argc, const char *argv[])
 		}
 		if(moveNumber==6)
 		{
-			moveNumber=lastMove()++;
 			reverseMove();
+			moveNumber=Path[endOfPath] + 1 ;
 		}
 		if(tower[2].topIndex==numberOfDisks-1)
 			win=1;
