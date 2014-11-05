@@ -60,4 +60,21 @@ void initialing()
 	}
 }
 
-
+/*
+this is function that is try to make a move and add it to the path , if it successfull return true .
+rules : 1-we can't put the bigger disk on smaller one 
+	2-current destination can not be last move orgin , because it is unnessesery move and makes loop
+*/
+int move(int moveNum)
+{
+	int lastMove[2]=moves[path[endOfPath]] , currentMove[2]=moves[moveNum];
+	if(lastMove[0]!=currnetMove[1] 
+	&& tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] < tower[currentMove[1]].disks[tower[currentMove[1]].topIndex])
+	{
+		tower[currentMove[1]].disks[++(tower[currentMove[1]].topIndex)] = tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] ;
+		tower[currentMove[0]].topIndex--;
+		path[++endOfPath]=moveNum;
+		return 1 ;
+	}
+	return 0
+}
