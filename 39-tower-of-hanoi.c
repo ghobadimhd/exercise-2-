@@ -82,3 +82,13 @@ int move(int moveNum)
 	}
 	return 0
 }
+/*
+this is function that revers a last move and remove it from path .
+*/
+void reverseMove()
+{
+	int lastMove[2]=moves[path[endOfPath]];
+	tower[lastMove[0]].disks[++(tower[lastMove[0]].topIndex)] = tower[lastMove[1]].disks[tower[lastMove[1]].topIndex] ;
+	tower[lastMove[1]].topIndex--;
+	endOfPath--;
+}
