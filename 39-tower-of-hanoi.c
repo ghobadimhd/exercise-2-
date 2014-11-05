@@ -7,10 +7,11 @@ describtion : This is program for solving tower of hanoi  .
 */
 #include <stdio.h>
 const int numberOfDisks=10 , pathLength=3000 ;
-int endOfPath=-1, path[pathLength] , moves[6][2]={{0,1},{0,2},{1,0},{1,2},{2,0},{2,1}} , moveNumber=0;
+//Compile error when using pathLength : error: variably modified ‘path’ at file scope
+int endOfPath=-1, path[3000] , moves[6][2]={{0,1},{0,2},{1,0},{1,2},{2,0},{2,1}} , moveNumber=0;
 struct Tower 
 {
-	int topIndex , disks[nummberOfDisks] ;
+	int topIndex /*point to last disk*/, disks[10] ;
 } tower[3];
 void initialing();
 int move(int);
@@ -36,13 +37,27 @@ int main(int argc, const char *argv[])
 		if(moveNumber==6)
 		{
 			reverseMove();
-			moveNumber=Path[endOfPath] + 1 ;
+			moveNumber=path[endOfPath] + 1 ;
 		}
 		if(tower[2].topIndex==numberOfDisks-1)
 			win=1;
 	}while(!win);
 	return 0;
 }
-
+/*
+this is function initialing ... .
+*/
+void initialing()
+{
+	for (int i = 1; i <3; i++) 
+	{
+		tower[i].topIndex =-1;
+	}
+	for (int i = 1; i <=numberOfDisks; i++) 
+	{
+		tower[1].disks[i-1]=i;
+		tower[1].topIndex++;
+	}
+}
 
 
