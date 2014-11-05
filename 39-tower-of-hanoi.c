@@ -17,7 +17,11 @@ void initialing();
 int move(int);
 void reverseMove();
 void printPath();
-
+/*
+this is main function that check the moves and looking for path to succeed , it try moves until find a deadlock path or succeed 
+if it find a deadlock , revese last move and try a next availble move until it find path to succeed  
+succeed means that tower number filled up ...
+*/
 int main(int argc, const char *argv[])
 {
 	int win=0 , haveAMove=1;
