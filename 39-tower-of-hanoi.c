@@ -59,8 +59,8 @@ void initialing()
 	}
 	for (int i = 1; i <=numberOfDisks; i++) 
 	{
-		tower[1].disks[i-1]=i;
-		tower[1].topIndex++;
+		tower[0].disks[i-1]=i;
+		tower[0].topIndex++;
 	}
 }
 
