@@ -13,7 +13,7 @@ when it get a character if the character was not a space copy else it copy a spa
 */
 int main(int argc, const char *argv[])
 {
-	char *string ,*string2=""  ;
+	char string[500] ,string2[500]=""  ;
 	int isUniq=0 , i=0;
 	printf("Enter a string : ");
 	gets(string);
@@ -34,6 +34,7 @@ int main(int argc, const char *argv[])
 			strcat(string2,ch);
 			isUniq=1;
 		}
+		i++;
 	}
 	puts(string2);	
 	return 0;
