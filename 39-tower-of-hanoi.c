@@ -14,11 +14,32 @@ struct Tower
 } tower[3];
 void initialing();
 int move(int[]);
-void reverseMove(int[]);
+void reverseMove();
 void printPath();
 
 int main(int argc, const char *argv[])
 {
+	int win=0 , haveAMove=1;
+	while(win)
+	{
+		
+		if(haveAMove)
+			moveNumber=0;
+		//haveAMove=0;
+		for (; moveNumber<6; moveNumber++) 
+		{
+			haveAMove=move(moveNumber);
+			if(haveAMove)
+				break;
+		}
+		if(moveNumber==6)
+		{
+			moveNumber=lastMove()++;
+			reverseMove();
+		}
+		if(tower[2].topIndex==numberOfDisks-1)
+			win=1;
+	}
 	return 0;
 }
 
