@@ -14,7 +14,8 @@ struct Tower
 	int topIndex /*point to last disk*/, disks[10] ;
 } tower[3];
 void initialing();
-int move(int);
+int checkMove(int);
+void move(int);
 void reverseMove();
 void printPath();
 /*
@@ -25,16 +26,18 @@ succeed means that tower number filled up ...
 int main(int argc, const char *argv[])
 {
 	int win=0 , haveAMove=1;
+	printPath();
 	initialing();
+	printPath();
 	do
 	{
-		
+		printPath();
 		if(haveAMove)
 			moveNumber=0;
 		//haveAMove=0;
 		for (; moveNumber<6; moveNumber++) 
 		{
-			haveAMove=move(moveNumber);
+			haveAMove=checkMove(moveNumber);
 			if(haveAMove)
 				break;
 		}
@@ -45,6 +48,7 @@ int main(int argc, const char *argv[])
 		}
 		if(tower[2].topIndex==numberOfDisks-1)
 			win=1;
+		printf("Move=%d\n",moveNumber);
 	}while(!win);
 	return 0;
 }
@@ -53,34 +57,60 @@ this is function initialing ... .
 */
 void initialing()
 {
-	for (int i = 1; i <3; i++) 
+	for (int i = 0; i <3; i++) 
 	{
 		tower[i].topIndex =-1;
 	}
-	for (int i = 1; i <=numberOfDisks; i++) 
+	for (int i = 0; i <numberOfDisks; i++) 
 	{
-		tower[0].disks[i-1]=i;
+		tower[0].disks[i]=numberOfDisks - i;
 		tower[0].topIndex++;
 	}
 }
 
 /*
 this is function that is try to make a move and add it to the path , if it successfull return true .
-rules : 1-we can't put the bigger disk on smaller one 
+additional rules :
+	1-we can't put the bigger disk on smaller one 
 	2-current destination can not be last move orgin , because it is unnessesery move and makes loop
 */
-int move(int moveNum)
+int checkMove(int moveNum)
 {
 	int lastMove[2]={moves[path[endOfPath]][0],moves[path[endOfPath]][1]} , currentMove[2]={moves[moveNum][0],moves[moveNum][1]}; 
-	if(lastMove[0]!=currentMove[1] 
-	&& tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] < tower[currentMove[1]].disks[tower[currentMove[1]].topIndex])
+	if(tower[currentMove[0]].topIndex > -1) // if orgin not empty
 	{
-		tower[currentMove[1]].disks[++(tower[currentMove[1]].topIndex)] = tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] ;
-		tower[currentMove[0]].topIndex--;
-		path[++endOfPath]=moveNum;
-		return 1 ;
+		if(endOfPath < 0 ) // if nothing moved 
+		{
+			move(moveNum);
+			return 1 ;
+		}
+		else if(lastMove[1]!=currentMove[0]) // rule number 2  ## if 
+		{
+			if (tower[currentMove[1]].topIndex <0) // if destinatoin is empty make move
+			{
+				move(moveNum);
+				return 1 ;
+			}
+			//orgin disk should be smaller than destination 
+			else if( tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] < tower[currentMove[1]].disks[tower[currentMove[1]].topIndex])
+			{
+				move(moveNum);
+				return 1 ;
+			}
+		}
 	}
-	return 0;
+		return 0;
+}
+/*
+this is function that move and write it to path .
+*/
+void move(int moveNum)
+{
+	int lastMove[2]={moves[path[endOfPath]][0],moves[path[endOfPath]][1]} , currentMove[2]={moves[moveNum][0],moves[moveNum][1]}; 
+	tower[currentMove[1]].disks[++(tower[currentMove[1]].topIndex)] = tower[currentMove[0]].disks[tower[currentMove[0]].topIndex] ;
+	tower[currentMove[0]].topIndex--;
+	path[++endOfPath]=moveNum;
+	
 }
 /*
 this is function that revers a last move and remove it from path .
@@ -99,8 +129,10 @@ void printPath()
 {
 	for (int i = 0; i <=endOfPath; i++) 
 	{
-		printf("%d",path[i]);
+		printf(" %d:%d->%d ",path[i],moves[path[i]][0]+1,moves[path[i]][1]+1);
 		
 	}
+	printf("### %d:%d # %d %d %d ",endOfPath+1,path[endOfPath],tower[0].disks[tower[0].topIndex],tower[1].disks[tower[1].topIndex],tower[2].disks[tower[2].topIndex]);
+	//printf(" lasmove %d->%d ",moves[path[endOfPath]][0]+1,moves[path[endOfPath]][1]+1);
 	printf("\n");
 }
