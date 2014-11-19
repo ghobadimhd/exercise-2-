@@ -6,12 +6,12 @@ Email : ghobadi.mhd@outlook.com
 describtion : This is program for solving tower of hanoi  .
 */
 #include <stdio.h>
-const int numberOfDisks=10 , pathLength=3000 ;
+const int numberOfDisks=9 , pathLength=3000 ;
 //Compile error when using pathLength : error: variably modified ‘path’ at file scope
-int endOfPath=-1, path[3000] , moves[6][2]={{0,1},{0,2},{1,0},{1,2},{2,0},{2,1}} , moveNumber=0;
+int endOfPath=-1, path[30000] , moves[6][2]={{0,2},{0,1},{1,0},{1,2},{2,0},{2,1}} , moveNumber=0;
 struct Tower 
 {
-	int topIndex /*point to last disk*/, disks[10] ;
+	int topIndex /*point to last disk*/, disks[9] ;
 } tower[3];
 void initialing();
 int checkMove(int);
