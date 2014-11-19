@@ -26,12 +26,9 @@ succeed means that tower number filled up ...
 int main(int argc, const char *argv[])
 {
 	int win=0 , haveAMove=1;
-	printPath();//for debuging reason 
 	initialing();
-	printPath();//for debuaging reason 
 	do
 	{
-		printPath();//for debuging reason 
 		if(haveAMove)
 			moveNumber=0;
 		
@@ -48,9 +45,9 @@ int main(int argc, const char *argv[])
 		}
 		if(tower[2].topIndex==numberOfDisks-1)
 			win=1;
-		printf("Move=%d\n",moveNumber);// for debuging reason
 	}while(!win);
 	printPath();// success path 
+	printf("%d\n",endOfPath);
 	return 0;
 }
 /*
@@ -131,10 +128,8 @@ void printPath()
 	// this kind of print is for debuging  
 	for (int i = 0; i <=endOfPath; i++) 
 	{
-		printf(" %d:%d->%d ",path[i],moves[path[i]][0]+1,moves[path[i]][1]+1);
+		printf(" %d->%d ",moves[path[i]][0]+1,moves[path[i]][1]+1);
 		
 	}
-	printf("### %d:%d # %d %d %d ",endOfPath+1,path[endOfPath],tower[0].disks[tower[0].topIndex],tower[1].disks[tower[1].topIndex],tower[2].disks[tower[2].topIndex]);
-	//printf(" lasmove %d->%d ",moves[path[endOfPath]][0]+1,moves[path[endOfPath]][1]+1);
 	printf("\n");
 }
